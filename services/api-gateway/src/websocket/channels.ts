@@ -1,4 +1,4 @@
-import type { WebSocket } from 'ws';
+import { WebSocket } from 'ws';
 
 const channelClients = new Map<string, Set<WebSocket>>();
 
@@ -25,7 +25,7 @@ export function broadcastToChannel(channel: string, data: unknown): void {
 
   const message = JSON.stringify(data);
   for (const client of clients) {
-    if (client.readyState === 1) {
+    if (client.readyState === WebSocket.OPEN) {
       client.send(message);
     }
   }

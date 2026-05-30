@@ -1,7 +1,7 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import type { IncomingMessage } from 'http';
 import type { Server } from 'http';
-import { subscribe, unsubscribeAll, broadcastToChannel } from './channels.js';
+import { subscribe, unsubscribe, unsubscribeAll, broadcastToChannel } from './channels.js';
 import { getSubscriber } from './redis-adapter.js';
 
 interface WSMessage {
@@ -31,7 +31,7 @@ export function initWebSocketServer(httpServer: Server): WebSocketServer {
       try {
         const msg = JSON.parse(raw.toString()) as WSMessage;
         if (msg.type === 'subscribe') subscribe(msg.channel, ws);
-        if (msg.type === 'unsubscribe') unsubscribeAll(ws);
+        if (msg.type === 'unsubscribe') unsubscribe(msg.channel, ws);
       } catch {
         // Ignore malformed messages
       }
