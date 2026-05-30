@@ -1,0 +1,27 @@
+{
+  "name": "@halalgo/notification-service",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "@halalgo/database": "*",
+    "@halalgo/types": "*",
+    "@halalgo/kafka": "*",
+    "drizzle-orm": "^0.30.0",
+    "@neondatabase/serverless": "^0.9.0",
+    "expo-server-sdk": "^3.7.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.21.0",
+    "@types/node": "*",
+    "typescript": "*",
+    "tsx": "^4.7.0"
+  }
+}
