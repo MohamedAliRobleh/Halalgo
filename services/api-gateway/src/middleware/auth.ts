@@ -1,9 +1,7 @@
-import { createClerkClient } from '@clerk/backend';
+import { verifyToken } from '@clerk/backend';
 import type { Request, Response, NextFunction } from 'express';
 
-const clerk = createClerkClient({
-  secretKey: process.env['CLERK_SECRET_KEY'],
-});
+const secretKey = process.env['CLERK_SECRET_KEY'] ?? '';
 
 export interface AuthenticatedRequest extends Request {
   clerkUserId: string;
@@ -22,7 +20,7 @@ export async function requireAuth(
       return;
     }
 
-    const payload = await clerk.verifyToken(token);
+    const payload = await verifyToken(token, { secretKey });
     (req as AuthenticatedRequest).clerkUserId = payload.sub;
     (req as AuthenticatedRequest).userRole =
       (payload.publicMetadata as { role?: string })?.role ?? 'customer';

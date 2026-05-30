@@ -13,11 +13,11 @@ export function initWebSocketServer(httpServer: Server): WebSocketServer {
   const wss = new WebSocketServer({ server: httpServer, path: '/ws' });
 
   const redisSub = getSubscriber();
-  redisSub.psubscribe('*', (err) => {
+  redisSub.psubscribe('*', (err: Error | null | undefined) => {
     if (err) console.error('Redis psubscribe error:', err);
   });
 
-  redisSub.on('pmessage', (_pattern, channel, message) => {
+  redisSub.on('pmessage', (_pattern: string, channel: string, message: string) => {
     try {
       const data = JSON.parse(message) as unknown;
       broadcastToChannel(channel, data);

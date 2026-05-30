@@ -1,4 +1,4 @@
-import Redis from 'ioredis';
+import { Redis } from 'ioredis';
 
 let publisher: Redis | null = null;
 let subscriber: Redis | null = null;
