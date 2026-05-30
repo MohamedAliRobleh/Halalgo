@@ -5,3 +5,8 @@ dist/
 *.js.map
 coverage/
 .turbo/
+.vscode/
+.idea/
+.DS_Store
+*.log
+npm-debug.log*
