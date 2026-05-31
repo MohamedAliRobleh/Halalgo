@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.0.0",
-    "@halalgo/types": "workspace:*",
+    "@halalgo/types": "*",
     "@tanstack/react-query": "^5.0.0",
     "axios": "^1.6.0",
     "leaflet": "^1.9.4",
