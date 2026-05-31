@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "HalalGo Driver",
+    "slug": "halalgo-driver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1B4332"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "ca.halalgo.driver",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "HalalGo Driver needs your location to send you delivery requests.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "HalalGo Driver uses your location in the background to track deliveries."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1B4332"
+      },
+      "package": "ca.halalgo.driver",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_BACKGROUND_LOCATION"]
+    },
+    "plugins": ["expo-router", "expo-location"],
+    "experiments": { "typedRoutes": true }
+  }
+}
